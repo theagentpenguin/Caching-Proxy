@@ -1,0 +1,12 @@
+import chalk from 'chalk';
+import chalkAnimation from 'chalk-animation';
+import { createSpinner } from 'nanospinner';
+import { createProxy } from 'proxy';
+import * as http from 'http';
+
+const server = createProxy(http.createServer());
+server.listen(3030, ()=>{
+    var port = server.address().port;
+    console.log('HTTPs server is up and is running on port %d', port);
+});
+

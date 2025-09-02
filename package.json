@@ -1,0 +1,28 @@
+{
+  "name": "caching-proxy",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A CLI tool that starts a caching proxy server, it will forward requests to the actual server and cache the responses. If the same request is made again, it will return the cached response instead of forwarding the request to the server.",
+  "main": "cachingProxy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theagentpenguin/Caching-Proxy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theagentpenguin/Caching-Proxy/issues"
+  },
+  "homepage": "https://github.com/theagentpenguin/Caching-Proxy#readme",
+  "dependencies": {
+    "chalk": "^5.6.0",
+    "chalk-animation": "^2.0.3",
+    "http": "^0.0.1-security",
+    "nanospinner": "^1.2.2",
+    "proxy": "^2.2.0"
+  }
+}
