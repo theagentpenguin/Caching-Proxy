@@ -19,9 +19,10 @@
   },
   "homepage": "https://github.com/theagentpenguin/Caching-Proxy#readme",
   "dependencies": {
-    "chalk": "^5.6.0",
+    "chalk": "^5.6.2",
     "chalk-animation": "^2.0.3",
     "http": "^0.0.1-security",
+    "inquirer": "^12.9.4",
     "nanospinner": "^1.2.2",
     "proxy": "^2.2.0"
   }
