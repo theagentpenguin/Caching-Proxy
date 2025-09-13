@@ -2,21 +2,34 @@ import chalk from 'chalk';
 import chalkAnimation from 'chalk-animation';
 import { createSpinner } from 'nanospinner';
 import inquirer from 'inquirer';
-
-const urlStack = [];
-/*
-We'll be using the inquirer to get the values from the CLI and then check our stack for the URL.
-If the URL is present in the stack, we will return a HIT, if not, MISS.
+import fs from 'fs';
 
 
-*/
+
+const fileContent = fs.readFileSync('urlStack.json','utf8');
+let urlStack = JSON.parse(fileContent);
+const fileName = 'urlStack.json';
+
+if(!fs.existsSync(fileName)){
+    fs.writeFileSync('urlStack.json',JSON.stringify(urlStack),'utf8');
+}else{
+    const data = fs.readFileSync('urlStack.json','utf-8');
+    urlStack = JSON.parse(data);
+}
+
+function loadData(){
+    
+    const fileContent = fs.readFileSync('urlStack.json','utf8');
+    fs.writeFileSync('urlStack.json',JSON.stringify(urlStack,null,2),'utf8');
+}
+
 async function welcomeUser(){
     const welcomeMessage = chalkAnimation.karaoke(
             'Enter the url, lets check if it is in cache! \n'
         );
 }
 async function getInputUrl(){
-
+    //loadData();
     const {input_url} = await inquirer.prompt({
         name:'input_url',
         type: 'input'
@@ -26,15 +39,12 @@ async function getInputUrl(){
         chalk.blue(console.log("HIT"));
     }else{
         urlStack.push(input_url);
+        loadData();
         chalk.blue(console.log("MISS"));
     }
     console.log(urlStack);
 }
 
-// const server = createProxy(http.createServer());
-// server.listen(3030, ()=>{
-//     var port = server.address().port;
-//     console.log('HTTPs server is up and is running on port %d', port);
-// });
+
 await welcomeUser();
 await getInputUrl();
